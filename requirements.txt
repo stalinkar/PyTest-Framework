@@ -4,3 +4,4 @@ selenium
 requests
 pytest-xdist
 PyYAML
+webdriver-manager
