@@ -1,0 +1,5 @@
+# config/config.yaml
+web:
+  base_url: "https://www.google.com"
+api:
+  base_url: "https://jsonplaceholder.typicode.com"
