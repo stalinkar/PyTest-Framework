@@ -3,9 +3,11 @@ name: Run Python Tests
 
 on:
   push:
-    branches: [ staging ]
+    branches:
+      - "**"  # Run on pushes to any branch
   pull_request:
-    branches: [ staging ]
+    branches:
+      - "**"
 
 jobs:
   test:
@@ -30,9 +32,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
 
+      - name: Print Branch Name
+        run: echo "Branch name is ${{ github.ref_name }}"
+
       - name: Run tests
-        run: pytest --html=report.html --self-contained-html
-      
+        run: |
+          echo "Running tests on branch: ${{ github.ref_name }}"
+          pytest --html=report.html --self-contained-html
+
       - name: Upload test report
         uses: actions/upload-artifact@v4
         with:
