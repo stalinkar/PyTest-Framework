@@ -12,6 +12,8 @@ def driver():
     options.add_argument("--headless")  # Run in headless mode for CI environments
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
+    options.timeouts = {'implicit': 5000}
+    options.add_argument("--start-maximized")
     # Initialize ChromeDriver without directly passing the executable path
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     yield driver
